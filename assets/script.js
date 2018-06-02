@@ -17,6 +17,8 @@ var destination = "";
 var time = "";
 var rate = "";
 var nextTime = "";
+
+
 $("#button").on("click", function (event) {
     event.preventDefault();
 
@@ -57,20 +59,20 @@ database.ref().on("child_added", function (snapshot) {
         var newDestination = $("<td>");
         var newTime = $("<td>");
         var newRate = $("<td>");
-        var newMinutesAway = $("<td>");
+        var nextTime = $("<td>");
 
         trainTimes.append(newRow);
         newRow.append(newName);
         newRow.append(newDestination);
         newRow.append(newTime);
         newRow.append(newRate);
-        newRow.append(newMinutesAway);
+        newRow.append(nextTime);
 
         newName.text(sv.name);
         newDestination.text(sv.destination);
         newTime.text(sv.time);
         newRate.text(sv.rate);
-        newMinutesAway.text(sv.newMinutesAway);
+        nextTime.text(sv.nextTime);
 
     }
 
