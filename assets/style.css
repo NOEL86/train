@@ -1,0 +1,37 @@
+
+body {
+    background-image: url('https://i.pinimg.com/originals/42/14/f5/4214f58f893b1c396c0ae35da1c1fab7.jpg');
+    background-size: cover;
+    font-family: 'Bungee Inline', cursive;
+} 
+#jumbo {
+    background-color: black;
+    color: white;
+    text-align: center;
+    border: black 2px solid;
+}
+
+.card-title {
+    font-family: 'Overpass', sans-serif;
+}
+
+#data-holder {
+    color: black;
+    width: 100%;
+}
+
+.card-header {
+    background-color: rgb(117, 116, 116);
+    color: white;
+    font-size: 20px;
+}
+
+.card {
+    border: blue .5px solid;
+}
+
+.card-body {
+    border: blue .5px solid;
+    font-family: 'Overpass', sans-serif;
+    color: white;
+}
