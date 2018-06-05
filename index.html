@@ -13,9 +13,12 @@
     <link rel="stylesheet" type="text/css" media="screen" href="assets/style.css" />
     <link href="https://fonts.googleapis.com/css?family=Bungee+Inline" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Overpass" rel="stylesheet">
+
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
 </head>
 
 <body>
@@ -45,7 +48,7 @@
                                     <th>Next Arrival</th>
                                     <th id="last">Minutes Away</th>
                                 </tr>
-                                <tr id="info"></tr>
+
                             </table>
                         </h5>
                         <br>
@@ -77,10 +80,6 @@
                     <input id="rate" type="text " class="form-control " placeholder=" " aria-label="
                         " aria-describedby="basic-addon1 ">
                     <br>
-                    <h5 class="card-title ">Minutes Away</h5>
-                    <input id="nextTime" type="text " class="form-control " placeholder=" " aria-label="
-                        " aria-describedby="basic-addon1 ">
-                    <br>
                     <button type="button " id="button" class="btn btn-primary">Submit</button>
 
                 </div>
@@ -94,7 +93,7 @@
     </div>
     <br>
 
-    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+
     <script src="assets/script.js "></script>
 
 </body>
