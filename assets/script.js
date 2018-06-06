@@ -10,7 +10,6 @@ var config = {
 
 firebase.initializeApp(config);
 
-
 var database = firebase.database();
 var name = "";
 var destination = "";
@@ -24,15 +23,10 @@ $("#button").on("click", function (event) {
 
     name = $("#name").val().trim();
     destination = $("#destination").val().trim();
-    //time = moment($("#time").val().trim(), "HH:MM").format("X");
     time = $("#time").val().trim();
-    console.log("moment time: " + time);
     rate = $("#rate").val().trim();
 
-
-
     $(".form-control").val("");
-
 
     database.ref().push({
         name: name,
@@ -41,7 +35,6 @@ $("#button").on("click", function (event) {
         rate: rate,
         tMinutesTillTrain: tMinutesTillTrain
     });
-
 
 })
 
@@ -54,14 +47,11 @@ database.ref().on("child_added", function (childSnapshot, prevChildKey) {
     var newTime = (sv.time);
     var newRate = (sv.rate);
 
-
-    var tFrequency = 20;
-
     // Time is...
-    var firstTime = "05:30";
+    // var firstTime = "05:30";
 
     // First Time (pushed back 1 year to make sure it comes before current time)
-    var firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
+    var firstTimeConverted = moment(newTime, "HH:mm").subtract(1, "years");
     console.log(firstTimeConverted);
 
     // Current Time
@@ -73,23 +63,24 @@ database.ref().on("child_added", function (childSnapshot, prevChildKey) {
     console.log("DIFFERENCE IN TIME: " + diffTime);
 
     // Time apart (remainder)
-    var tRemainder = diffTime % tFrequency;
+    var tRemainder = diffTime % newRate;
     console.log(tRemainder);
 
     // Minute Until Train
-    var tMinutesTillTrain = tFrequency - tRemainder;
+    var tMinutesTillTrain = newRate - tRemainder;
     console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
 
     // Next Train
     var nextTrain = moment().add(tMinutesTillTrain, "minutes");
-    console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
+    console.log(nextTrain);
+    var trainArrival = moment(nextTrain).format("hh:mm");
+    console.log(trainArrival);
 
     console.log(newName);
     console.log(newDestination);
-    console.log(newTime);
     console.log(newRate);
 
-    $("#data-holder").append("<tr><td>" + newName + "</td><td>" + newDestination + "</td><td>" + newRate + "</td><td>" + newTime + "</td><td>"
+    $("#data-holder").append("<tr><td>" + newName + "</td><td>" + newDestination + "</td><td>" + newRate + "</td><td>" + trainArrival + "</td><td>"
         + tMinutesTillTrain + "</td></tr>");
 
 
@@ -97,7 +88,6 @@ database.ref().on("child_added", function (childSnapshot, prevChildKey) {
 }, function (errorObject) {
 
     console.log("Errors handled: " + errorObject.code);
-
 });
 
 $("#reset").on("click", function () {
